@@ -51,9 +51,9 @@ export default function TiltCard({ children, className = "" }) {
       style={tiltStyles}
       className={`relative overflow-hidden transition-shadow duration-300 group/tilt ${className}`}
     >
-      {/* 3D Gold Gloss Overlay Effect */}
+      {/* 3D Orange Gloss Overlay Effect */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover/tilt:opacity-15 pointer-events-none z-20 transition-opacity duration-300 bg-[radial-gradient(circle_at_var(--shine-x,50%)_var(--shine-y,50%),rgba(255,255,255,0.8),transparent_50%)]"
+        className="absolute inset-0 opacity-0 group-hover/tilt:opacity-20 pointer-events-none z-20 transition-opacity duration-300 bg-[radial-gradient(circle_at_var(--shine-x,50%)_var(--shine-y,50%),rgba(242,97,63,0.8),transparent_50%)]"
       />
       {children}
     </div>

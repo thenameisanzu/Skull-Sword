@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060606;
+  --background: #0C0C0C;
   --foreground: #f3f4f6;
   
-  --gold-primary: #c5a880;
-  --gold-accent: #d4af37;
-  --gold-dark: #8c7255;
-  --crimson-primary: #991b1b;
-  --crimson-accent: #b91c1c;
-  --charcoal-light: #161616;
-  --charcoal-medium: #0e0e0e;
-  --charcoal-dark: #060606;
+  --gold-primary: #9B3922;
+  --gold-accent: #F2613F;
+  --gold-dark: #481E14;
+  --crimson-primary: #9B3922;
+  --crimson-accent: #F2613F;
+  --charcoal-light: #1A1A1A;
+  --charcoal-medium: #121212;
+  --charcoal-dark: #0C0C0C;
 }
 
 @theme inline {
@@ -90,18 +90,18 @@ body {
 
 /* Standout Button Utilities */
 .btn-primary-standout {
-  background: linear-gradient(135deg, #e5c158 0%, #c5a880 100%) !important;
-  color: #060606 !important;
-  box-shadow: 0 4px 20px rgba(229, 193, 88, 0.2) !important;
-  border: 1px solid rgba(229, 193, 88, 0.3) !important;
+  background: linear-gradient(135deg, #F2613F 0%, #9B3922 100%) !important;
+  color: #0C0C0C !important;
+  box-shadow: 0 4px 20px rgba(242, 97, 63, 0.25) !important;
+  border: 1px solid rgba(242, 97, 63, 0.4) !important;
   font-weight: 850 !important;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .btn-primary-standout:hover {
-  background: linear-gradient(135deg, #f3d070 0%, #d4af37 100%) !important;
-  box-shadow: 0 4px 25px rgba(243, 208, 112, 0.4) !important;
-  border-color: rgba(243, 208, 112, 0.5) !important;
+  background: linear-gradient(135deg, #ff7a5c 0%, #a83f27 100%) !important;
+  box-shadow: 0 4px 25px rgba(242, 97, 63, 0.45) !important;
+  border-color: rgba(242, 97, 63, 0.6) !important;
   transform: scale(1.02) translateY(-1px) !important;
 }
 
@@ -112,15 +112,15 @@ body {
 .btn-secondary-standout {
   background: transparent !important;
   color: #f3f4f6 !important;
-  border: 1px solid rgba(197, 168, 128, 0.4) !important;
+  border: 1px solid rgba(242, 97, 63, 0.4) !important;
   font-weight: 700 !important;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .btn-secondary-standout:hover {
-  border-color: #d4af37 !important;
-  color: #d4af37 !important;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1) !important;
+  border-color: #F2613F !important;
+  color: #F2613F !important;
+  box-shadow: 0 4px 15px rgba(242, 97, 63, 0.15) !important;
   transform: scale(1.02) translateY(-1px) !important;
 }
 
