@@ -43,13 +43,23 @@ export default function Studio() {
               </p>
             </div>
             
-            <div className="w-full h-80 lg:h-[400px] relative overflow-hidden rounded-2xl border border-charcoal-light">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/studio-heritage.jpg"
-                alt="Skull & Sword Studio Setup"
-                className="w-full h-full object-cover"
-              />
+            <div className="grid grid-cols-2 gap-4 h-80 lg:h-[400px] w-full">
+              <div className="relative overflow-hidden rounded-2xl border border-charcoal-light h-full">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/studio-heritage.jpg"
+                  alt="Skull & Sword Studio Setup"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-2xl border border-charcoal-light h-full">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/studio-heritage-2.jpg"
+                  alt="Skull & Sword Studio Interior"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </section>
 
