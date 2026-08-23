@@ -67,13 +67,13 @@ export default function Studio() {
                   className="bg-charcoal-medium border border-charcoal-light p-8 rounded-2xl hover:border-gold-primary/20 transition-all duration-300 flex flex-col sm:flex-row gap-8"
                 >
                   {/* Left canvas portrait placeholder */}
-                  <div className="w-full sm:w-40 h-56 sm:h-auto shrink-0 relative overflow-hidden rounded-xl">
+                  <div className="w-48 h-64 mx-auto sm:mx-0 shrink-0 relative overflow-hidden rounded-xl">
                     {artist.imageSrc ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={artist.imageSrc}
                         alt={artist.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <TattooPlaceholder type={artist.type} className="h-full border-none rounded-xl" />
