@@ -100,7 +100,7 @@ export default function CircularMomentsGallery() {
   const cardWidth = isMobile ? 288 : 320;
   const gap = isMobile ? 16 : 24;
   const centerOffset = isMobile ? 144 : 160;
-  const translateVal = `calc(50vw - ${centerOffset}px - ${activeIndex * (cardWidth + gap)}px)`;
+  const translateVal = `calc(50% - ${centerOffset}px - ${activeIndex * (cardWidth + gap)}px)`;
 
   return (
     <div className="relative w-full bg-charcoal-medium/55 border border-charcoal-light rounded-3xl p-8 sm:p-12 overflow-hidden shadow-2xl">
@@ -181,47 +181,38 @@ export default function CircularMomentsGallery() {
               );
             })}
           </div>
-
-          {/* Absolute Chevron controls positioned over the track boundaries */}
-          <div className="absolute inset-y-0 left-2 z-20 flex items-center pointer-events-none">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handlePrev();
-              }}
-              className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 bg-charcoal-medium/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-90 pointer-events-auto shadow-lg shadow-black/50"
-              aria-label="Previous Moment"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-          </div>
-
-          <div className="absolute inset-y-0 right-2 z-20 flex items-center pointer-events-none">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleNext();
-              }}
-              className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 bg-charcoal-medium/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-90 pointer-events-auto shadow-lg shadow-black/50"
-              aria-label="Next Moment"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
         </div>
 
-        {/* Timeline dots indicators below */}
-        <div className="flex gap-1.5 mt-8 relative z-20">
-          {moments.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? "w-6 bg-gold-primary" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* Timeline controls indicator below */}
+        <div className="flex items-center gap-6 mt-8 relative z-20">
+          <button
+            onClick={handlePrev}
+            className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 flex items-center justify-center transition-all duration-300 active:scale-90 shadow-lg shadow-black/30 bg-charcoal-dark/50 cursor-pointer"
+            aria-label="Previous Moment"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <div className="flex gap-1.5">
+            {moments.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === activeIndex ? "w-6 bg-gold-primary" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 flex items-center justify-center transition-all duration-300 active:scale-90 shadow-lg shadow-black/30 bg-charcoal-dark/50 cursor-pointer"
+            aria-label="Next Moment"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </div>
