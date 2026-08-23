@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Reveal from "./Reveal";
 
@@ -68,7 +68,18 @@ const moments = [
 ];
 
 export default function CircularMomentsGallery() {
-  const [activeIndex, setActiveIndex] = useState(4); // Start near the center of 10 cards
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? moments.length - 1 : prev - 1));
@@ -77,6 +88,19 @@ export default function CircularMomentsGallery() {
   const handleNext = () => {
     setActiveIndex((prev) => (prev === moments.length - 1 ? 0 : prev + 1));
   };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const cardWidth = isMobile ? 288 : 320;
+  const gap = isMobile ? 16 : 24;
+  const centerOffset = isMobile ? 144 : 160;
+  const translateVal = `calc(50vw - ${centerOffset}px - ${activeIndex * (cardWidth + gap)}px)`;
 
   return (
     <div className="relative w-full bg-charcoal-medium/55 border border-charcoal-light rounded-3xl p-8 sm:p-12 overflow-hidden shadow-2xl">
@@ -87,108 +111,117 @@ export default function CircularMomentsGallery() {
         {/* Gallery Title Indicator */}
         <div className="text-center mb-8 sm:mb-12">
           <span className="text-[10px] font-brand uppercase tracking-widest text-gold-accent block mb-1">
-            Interactive Showcase
+            Studio Gallery
           </span>
           <h3 className="font-serif text-2xl uppercase tracking-wider font-black text-foreground">
-            Moments Gallery
+            Happy Moments
           </h3>
           <p className="text-[11px] text-foreground/50 mt-1">
-            Click side cards or drag to rotate through the studio moments
+            Auto-sliding moments showing our clients and piercing curations
           </p>
         </div>
 
-        {/* 3D Curved Cylindrical Slider Space */}
-        <div className="relative w-full h-[400px] sm:h-[480px] flex items-center justify-center overflow-visible">
-          {moments.map((moment, idx) => {
-            const offset = idx - activeIndex;
-            const absOffset = Math.abs(offset);
-            
-            // Layout transformation parameters to create a circular cylindrical depth
-            const rotationY = offset * -22; // Cylindrical Y-rotation
-            const scale = 1 - absOffset * 0.12; // Farther cards are scaled down
-            const translateX = offset * 140; // Horizontal offset positioning
-            const translateZ = absOffset * -120; // Depth push back
-            
-            // Dynamic card inline styling variables
-            const transformStyle = `perspective(1200px) translate3d(${translateX}px, 0, ${translateZ}px) rotateY(${rotationY}deg) scale(${scale})`;
-            const isActive = idx === activeIndex;
-
-            return (
-              <div
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                style={{
-                  transform: transformStyle,
-                  zIndex: 20 - absOffset,
-                  opacity: absOffset > 2 ? 0 : 1,
-                  transition: "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s, z-index 0.6s",
-                }}
-                className={`absolute w-64 sm:w-72 h-[340px] sm:h-[400px] rounded-3xl overflow-hidden border transition-colors duration-300 shadow-2xl cursor-pointer group select-none ${
-                  isActive
-                    ? "border-gold-primary/60 shadow-gold-primary/10 shadow-xl"
-                    : "border-charcoal-light hover:border-gold-primary/30"
-                }`}
-              >
-                {/* Image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={moment.src}
-                  alt={moment.title}
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    isActive ? "group-hover:scale-105" : "brightness-[0.45]"
-                  }`}
-                />
-
-                {/* Dark Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-                {/* Info Text overlays */}
-                <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end text-left select-none pointer-events-none">
-                  <span className="text-[9px] font-brand uppercase tracking-widest text-gold-accent font-bold mb-1">
-                    {moment.subtitle}
-                  </span>
-                  <h4 className="font-serif text-lg sm:text-xl font-bold text-zinc-100 leading-tight">
-                    {moment.title}
-                  </h4>
-                  <p className="text-[9px] text-foreground/45 tracking-wider mt-1.5 uppercase font-mono">
-                    {moment.credits}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* 3D Controls Arrows bar */}
-        <div className="flex items-center gap-4 mt-6 sm:mt-10 relative z-20">
-          <button
-            onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 flex items-center justify-center transition-all duration-300 active:scale-90"
-            aria-label="Previous Moment"
+        {/* Sliding Viewport Container */}
+        <div
+          className="relative w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Slider Track */}
+          <div
+            className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            style={{
+              transform: `translate3d(${translateVal}, 0, 0)`,
+              gap: `${gap}px`,
+              width: `${moments.length * (cardWidth + gap)}px`,
+            }}
           >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          
-          <div className="flex gap-1.5">
-            {moments.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === activeIndex ? "w-6 bg-gold-primary" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+            {moments.map((moment, idx) => {
+              const isActive = idx === activeIndex;
+
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  style={{
+                    width: `${cardWidth}px`,
+                    height: isMobile ? "340px" : "400px",
+                  }}
+                  className={`relative rounded-3xl overflow-hidden border shrink-0 transition-all duration-700 select-none cursor-pointer group ${
+                    isActive
+                      ? "border-gold-primary/60 scale-100 opacity-100 shadow-2xl shadow-gold-primary/10"
+                      : "border-charcoal-light scale-95 opacity-30 hover:border-gold-primary/30 hover:opacity-50"
+                  }`}
+                >
+                  {/* Image */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={moment.src}
+                    alt={moment.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+
+                  {/* Dark Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none" />
+
+                  {/* Info Text overlays */}
+                  <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end text-left select-none pointer-events-none">
+                    <span className="text-[9px] font-brand uppercase tracking-widest text-gold-accent font-bold mb-1">
+                      {moment.subtitle}
+                    </span>
+                    <h4 className="font-serif text-lg sm:text-xl font-bold text-zinc-100 leading-tight">
+                      {moment.title}
+                    </h4>
+                    <p className="text-[9px] text-foreground/45 tracking-wider mt-1.5 uppercase font-mono">
+                      {moment.credits}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          <button
-            onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 flex items-center justify-center transition-all duration-300 active:scale-90"
-            aria-label="Next Moment"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+          {/* Absolute Chevron controls positioned over the track boundaries */}
+          <div className="absolute inset-y-0 left-2 z-20 flex items-center pointer-events-none">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 bg-charcoal-medium/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-90 pointer-events-auto shadow-lg shadow-black/50"
+              aria-label="Previous Moment"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          </div>
+
+          <div className="absolute inset-y-0 right-2 z-20 flex items-center pointer-events-none">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              className="w-10 h-10 rounded-full border border-gold-primary/30 text-gold-primary hover:text-white hover:bg-gold-primary/20 bg-charcoal-medium/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-90 pointer-events-auto shadow-lg shadow-black/50"
+              aria-label="Next Moment"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Timeline dots indicators below */}
+        <div className="flex gap-1.5 mt-8 relative z-20">
+          {moments.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === activeIndex ? "w-6 bg-gold-primary" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>
