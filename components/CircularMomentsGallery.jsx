@@ -100,7 +100,7 @@ export default function CircularMomentsGallery() {
   const cardWidth = isMobile ? 288 : 320;
   const gap = isMobile ? 16 : 24;
   const centerOffset = isMobile ? 144 : 160;
-  const translateVal = `calc(50% - ${centerOffset}px - ${activeIndex * (cardWidth + gap)}px)`;
+  const translateVal = `calc(-${centerOffset}px - ${activeIndex * (cardWidth + gap)}px)`;
 
   return (
     <div className="relative w-full bg-charcoal-medium/55 border border-charcoal-light rounded-3xl p-8 sm:p-12 overflow-hidden shadow-2xl">
@@ -123,13 +123,13 @@ export default function CircularMomentsGallery() {
 
         {/* Sliding Viewport Container */}
         <div
-          className="relative w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing"
+          className="relative w-full overflow-hidden h-[360px] sm:h-[420px] cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Slider Track */}
           <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            className="absolute left-1/2 flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
             style={{
               transform: `translate3d(${translateVal}, 0, 0)`,
               gap: `${gap}px`,
@@ -161,22 +161,6 @@ export default function CircularMomentsGallery() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-
-                  {/* Dark Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-                  {/* Info Text overlays */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end text-left select-none pointer-events-none">
-                    <span className="text-[9px] font-brand uppercase tracking-widest text-gold-accent font-bold mb-1">
-                      {moment.subtitle}
-                    </span>
-                    <h4 className="font-serif text-lg sm:text-xl font-bold text-zinc-100 leading-tight">
-                      {moment.title}
-                    </h4>
-                    <p className="text-[9px] text-foreground/45 tracking-wider mt-1.5 uppercase font-mono">
-                      {moment.credits}
-                    </p>
-                  </div>
                 </div>
               );
             })}
