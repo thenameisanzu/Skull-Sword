@@ -81,7 +81,7 @@ export default function Booking() {
             {/* Left side details & context */}
             <div className="lg:col-span-1 flex flex-col gap-8">
               {/* Quick links block */}
-              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-sm">
+              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-2xl">
                 <h3 className="font-serif text-base font-bold text-gold-accent uppercase tracking-wider mb-4 border-b border-charcoal-light pb-2">
                   Need Quick Chat?
                 </h3>
@@ -90,10 +90,10 @@ export default function Booking() {
                 </p>
                 <div className="flex flex-col gap-3">
                   <a
-                    href="https://wa.me/14155550199"
+                    href="https://wa.me/918921865894"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark py-2.5 rounded-sm text-xs font-serif uppercase tracking-widest font-semibold transition-colors"
+                    className="flex items-center justify-center gap-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark py-2.5 rounded-xl text-xs font-serif uppercase tracking-widest font-semibold transition-colors"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span>WhatsApp Chat</span>
@@ -102,7 +102,7 @@ export default function Booking() {
                     href="https://www.instagram.com/skull_and_sword_tattoos/?hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark py-2.5 rounded-sm text-xs font-serif uppercase tracking-widest font-semibold transition-colors"
+                    className="flex items-center justify-center gap-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark py-2.5 rounded-xl text-xs font-serif uppercase tracking-widest font-semibold transition-colors"
                   >
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -115,7 +115,7 @@ export default function Booking() {
               </div>
 
               {/* Consultation instructions */}
-              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-sm">
+              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-2xl">
                 <div className="flex items-center gap-2 mb-3 text-gold-primary">
                   <Info className="h-4 w-4 shrink-0" />
                   <h4 className="font-serif text-sm font-bold uppercase tracking-wider">The Process</h4>
@@ -129,10 +129,10 @@ export default function Booking() {
               </div>
 
               {/* Autoclave badge */}
-              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-sm flex gap-3">
+              <div className="bg-charcoal-medium border border-charcoal-light p-6 rounded-2xl flex gap-3">
                 <Shield className="h-6 w-6 text-gold-primary shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-serif text-xs font-bold text-foreground uppercase tracking-widest">SF DPH Certified</h4>
+                  <h4 className="font-serif text-xs font-bold text-foreground uppercase tracking-widest">State Health Dept. Certified</h4>
                   <p className="text-[10px] text-foreground/50 leading-relaxed mt-1">
                     Licensed studio. Spore-tested autoclave. Zero-contamination standards.
                   </p>
@@ -141,7 +141,7 @@ export default function Booking() {
             </div>
 
             {/* Right side form panel */}
-            <div className="lg:col-span-2 bg-charcoal-medium border border-charcoal-light p-8 md:p-10 rounded-sm">
+            <div className="lg:col-span-2 bg-charcoal-medium border border-charcoal-light p-8 md:p-10 rounded-2xl">
               {isSuccess ? (
                 /* Success Screen */
                 <div className="text-center py-12 flex flex-col items-center gap-6 animate-scale-up">
@@ -160,7 +160,7 @@ export default function Booking() {
                   </p>
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="mt-6 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark px-8 py-3 rounded-sm font-serif text-xs uppercase tracking-widest font-bold transition-colors"
+                    className="mt-6 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-charcoal-dark px-8 py-3 rounded-xl font-serif text-xs uppercase tracking-widest font-bold transition-colors"
                   >
                     Submit Another Inquiry
                   </button>
@@ -181,7 +181,7 @@ export default function Booking() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
                         placeholder="e.g. John Doe"
                       />
                     </div>
@@ -196,7 +196,7 @@ export default function Booking() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
                         placeholder="e.g. john@example.com"
                       />
                     </div>
@@ -215,8 +215,8 @@ export default function Booking() {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
-                        placeholder="e.g. (415) 555-0199"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
+                        placeholder="e.g. +91 89218 65894"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -228,7 +228,7 @@ export default function Booking() {
                         name="contactMethod"
                         value={formData.contactMethod}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors"
                       >
                         <option value="Email">Email</option>
                         <option value="Phone Call">Phone Call</option>
@@ -248,7 +248,7 @@ export default function Booking() {
                         name="artist"
                         value={formData.artist}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors"
                       >
                         {artists.map((a, idx) => (
                           <option key={idx} value={a}>{a}</option>
@@ -264,7 +264,7 @@ export default function Booking() {
                         name="style"
                         value={formData.style}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors"
                       >
                         {styles.map((s, idx) => (
                           <option key={idx} value={s}>{s}</option>
@@ -284,7 +284,7 @@ export default function Booking() {
                         name="size"
                         value={formData.size}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors"
                       >
                         {sizes.map((sz, idx) => (
                           <option key={idx} value={sz}>{sz}</option>
@@ -300,7 +300,7 @@ export default function Booking() {
                         name="placement"
                         value={formData.placement}
                         onChange={handleChange}
-                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors"
+                        className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors"
                       >
                         {placements.map((p, idx) => (
                           <option key={idx} value={p}>{p}</option>
@@ -321,7 +321,7 @@ export default function Booking() {
                       rows="4"
                       value={formData.description}
                       onChange={handleChange}
-                      className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20 text-xs leading-relaxed"
+                      className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20 text-xs leading-relaxed"
                       placeholder="Describe what you want to tattoo, elements to include, meaning, and if there are any surrounding tattoos to blend with..."
                     />
                   </div>
@@ -338,7 +338,7 @@ export default function Booking() {
                       required
                       value={formData.dates}
                       onChange={handleChange}
-                      className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-sm focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
+                      className="w-full bg-charcoal-dark border border-charcoal-light text-foreground px-4 py-3 rounded-xl focus:border-gold-primary focus:outline-none transition-colors placeholder:text-foreground/20"
                       placeholder="e.g. October, Weekends or Tuesdays"
                     />
                   </div>
@@ -348,7 +348,7 @@ export default function Booking() {
                     <span className="font-serif text-xs uppercase tracking-wider text-foreground/80 font-semibold">
                       Reference Images (Optional)
                     </span>
-                    <div className="border border-dashed border-charcoal-light hover:border-gold-primary/30 transition-colors p-6 rounded-sm bg-charcoal-dark text-center relative flex flex-col items-center justify-center">
+                    <div className="border border-dashed border-charcoal-light hover:border-gold-primary/30 transition-colors p-6 rounded-xl bg-charcoal-dark text-center relative flex flex-col items-center justify-center">
                       <input
                         type="file"
                         id="reference"
@@ -371,7 +371,7 @@ export default function Booking() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gold-primary hover:bg-gold-accent disabled:bg-gold-primary/50 text-charcoal-dark py-4 rounded-sm font-serif uppercase tracking-widest font-black transition-colors flex items-center justify-center gap-2 mt-4 hover:cursor-pointer shadow-lg"
+                    className="w-full bg-gold-primary hover:bg-gold-accent disabled:bg-gold-primary/50 text-charcoal-dark py-4 rounded-xl font-serif uppercase tracking-widest font-black transition-colors flex items-center justify-center gap-2 mt-4 hover:cursor-pointer shadow-lg"
                   >
                     <Send className="h-4 w-4" />
                     <span>{isSubmitting ? "Submitting Inquiry..." : "Submit Inquiry"}</span>

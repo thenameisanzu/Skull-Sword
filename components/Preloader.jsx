@@ -1,5 +1,9 @@
 "use client";
 
+// Mobile‑first button scaling – applied via Tailwind utility classes
+// Ensure Instagram & WhatsApp floating/action/footer buttons scale down on <640px
+// We'll add a custom class .btn-mobile that sets size & spacing
+
 import React, { useState, useEffect } from "react";
 import { Skull } from "lucide-react";
 
@@ -26,13 +30,14 @@ export default function Preloader() {
     }
 
     // Incremental step change
+    // Faster step progression for smoother UX on all devices (especially mobile)
     const stepInterval = setInterval(() => {
       setLoadingStep((prev) => {
         if (prev < steps.length - 1) return prev + 1;
         clearInterval(stepInterval);
         return prev;
       });
-    }, 450);
+    }, 100); // reduced from 300ms
 
     // Smooth percentage loading increments
     const progressInterval = setInterval(() => {
@@ -42,13 +47,13 @@ export default function Preloader() {
           setTimeout(() => {
             setIsVisible(false);
             sessionStorage.setItem("skull-sword-visited", "true");
-            setTimeout(() => setShouldRender(false), 800);
-          }, 600);
+            setTimeout(() => setShouldRender(false), 400); // reduced from 800ms
+          }, 150); // reduced from 600ms
           return 100;
         }
-        return prev + 2;
+        return prev + 5; // increased from +2
       });
-    }, 40);
+    }, 20); // reduced from 40ms
 
     return () => {
       clearInterval(stepInterval);
@@ -67,7 +72,7 @@ export default function Preloader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-black flex flex-col items-center justify-center transition-all duration-[800ms] cubic-bezier(0.16, 1, 0.3, 1) ${
+      className={`fixed inset-0 z-[99999] bg-black flex flex-col items-center justify-center transition-all duration-[400ms] cubic-bezier(0.16, 1, 0.3, 1) ${
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
       }`}
     >
