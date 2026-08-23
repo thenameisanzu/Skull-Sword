@@ -73,7 +73,7 @@ export default function Booking() {
             </h1>
             <div className="w-16 h-[2px] bg-gradient-to-r from-gold-primary to-crimson-primary mx-auto mb-6" />
             <p className="text-sm text-foreground/80 leading-relaxed">
-              We operate strictly by appointment for custom illustration and tattooing. Submit your concept request below to schedule a consultation with one of our artists.
+              We operate strictly by appointment for custom illustration and tattooing. Submit your concept request below to schedule a consultation with lead artist Amal Dev.
             </p>
           </div>
 

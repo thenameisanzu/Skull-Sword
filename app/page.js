@@ -226,7 +226,7 @@ export default function Home() {
                   </h2>
                   <div className="w-16 h-[2px] bg-gradient-to-r from-gold-primary to-crimson-primary mb-4" />
                   <p className="text-sm text-foreground/75 leading-relaxed max-w-xl">
-                    A preview of custom designs crafted by the studio's crew. Each tattoo is customized to match individual placements and sizes.
+                    A preview of custom designs crafted by resident artist Amal Dev. Each tattoo is customized to match individual placements and sizes.
                   </p>
                 </div>
                 <Link
@@ -297,7 +297,7 @@ export default function Home() {
                     <Heart className="h-5 w-5 text-gold-primary shrink-0 mt-1" />
                     <div>
                       <h4 className="font-serif text-sm font-bold text-foreground uppercase tracking-wider">Licensed Studio</h4>
-                      <p className="text-xs text-foreground/60 mt-1">Fully registered artists holding current sterilization and safety certifications.</p>
+                      <p className="text-xs text-foreground/60 mt-1">Fully registered studio holding current sterilization and safety certifications.</p>
                     </div>
                   </div>
                   <div className="flex gap-3">

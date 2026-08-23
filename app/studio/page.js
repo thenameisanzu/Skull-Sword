@@ -52,11 +52,11 @@ export default function Studio() {
           <section className="mb-24">
             <div className="text-center max-w-xl mx-auto mb-16">
               <h2 className="font-serif text-3xl uppercase tracking-wider font-black mb-4 heading-gradient">
-                The Crew
+                Resident Artist
               </h2>
               <div className="w-16 h-[2px] bg-gradient-to-r from-gold-primary to-crimson-primary mx-auto mb-4" />
               <p className="text-sm text-foreground/75 leading-relaxed">
-                Meet the resident masters of their craft. Each artist works directly with clients to illustrate custom, bespoke concepts.
+                Meet our founder and lead resident artist, Amal Dev. He works directly with clients to illustrate custom, bespoke concepts.
               </p>
             </div>
 

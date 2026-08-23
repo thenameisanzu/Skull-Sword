@@ -62,12 +62,12 @@ export default function Portfolio() {
     },
     {
       id: 6,
-      title: "Archangel Michael",
+      title: "Skull & Sword Legacy",
       artist: "Amal Dev",
       category: "Tattoo",
       imageSrc: "/images/hero-1.png",
       type: "dagger",
-      desc: "A powerful, detailed illustrative arm tattoo representing Archangel Michael holding a sword, outlined with fine shadow work."
+      desc: "A highly detailed, professional blackwork tattoo illustration featuring a gothic skull combined with an ornate medieval sword driven vertically through the center."
     },
     {
       id: 7,
@@ -196,7 +196,7 @@ export default function Portfolio() {
             </h1>
             <div className="w-16 h-[2px] bg-gradient-to-r from-gold-primary to-crimson-primary mx-auto mb-6" />
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Explore custom tattooing masterpieces crafted by the Skull & Sword team. Every tattoo is a custom heirloom, illustrated individually and placed to flow with the anatomy of the client.
+              Explore custom tattooing masterpieces crafted by resident artist Amal Dev. Every tattoo is a custom heirloom, illustrated individually and placed to flow with the anatomy of the client.
             </p>
           </div>
 
