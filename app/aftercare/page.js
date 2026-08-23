@@ -189,7 +189,7 @@ export default function Aftercare() {
             </div>
             <Link
               href="/booking"
-              className="bg-gold-primary hover:bg-gold-accent text-charcoal-dark px-6 py-3 font-serif text-xs uppercase tracking-widest font-bold transition-colors rounded-xl shrink-0 shadow-lg"
+              className="btn-primary-standout px-6 py-3 font-serif text-xs uppercase tracking-widest font-bold rounded-xl shrink-0"
             >
               Contact Artist
             </Link>

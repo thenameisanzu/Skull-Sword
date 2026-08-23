@@ -85,7 +85,7 @@ export default function FloatingAction() {
         </a>
         <Link
           href="/booking"
-          className="flex-1 h-11 bg-gold-primary text-charcoal-dark flex items-center justify-center gap-2 rounded-xl font-serif text-xs uppercase tracking-widest font-black hover:bg-gold-accent transition-colors shadow-lg shadow-gold-primary/10"
+          className="flex-1 h-11 btn-primary-standout flex items-center justify-center gap-2 rounded-xl font-serif text-xs uppercase tracking-widest font-black"
         >
           <Calendar className="h-4 w-4" />
           <span>Book Session</span>

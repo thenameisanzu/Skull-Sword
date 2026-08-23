@@ -119,14 +119,14 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
                   <Link
                   href="/booking"
-                  className="inline-flex items-center justify-center gap-2 bg-gold-primary hover:bg-gold-accent text-charcoal-dark px-8 py-4 font-serif text-sm uppercase tracking-widest font-bold transition-all duration-300 rounded-xl shadow-xl shadow-gold-primary/10 hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 btn-primary-standout px-8 py-4 font-serif text-sm uppercase tracking-widest font-bold rounded-xl"
                 >
                   <Calendar className="h-4 w-4" />
                   <span>Book Consultation</span>
                 </Link>
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 border border-foreground/30 hover:border-gold-primary px-8 py-4 font-serif text-sm uppercase tracking-widest text-foreground hover:text-gold-primary transition-all duration-300 rounded-xl hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 btn-secondary-standout px-8 py-4 font-serif text-sm uppercase tracking-widest rounded-xl"
                 >
                     <span>Browse Gallery</span>
                     <ArrowRight className="h-4 w-4" />
@@ -203,7 +203,7 @@ export default function Home() {
                     
                     <Link
                       href={service.href}
-                      className="w-full text-center bg-transparent border border-gold-primary/45 hover:border-gold-accent text-gold-primary hover:text-charcoal-dark hover:bg-gold-primary py-3 rounded-xl font-serif text-xs uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center gap-2"
+                      className="w-full text-center btn-primary-standout py-3 rounded-xl font-serif text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2"
                     >
                       <span>{service.cta}</span>
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -231,7 +231,7 @@ export default function Home() {
                 </div>
                 <Link
                   href="/portfolio"
-                  className="border border-gold-primary/40 hover:border-gold-accent text-gold-primary hover:text-white px-6 py-3 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-xl shrink-0"
+                  className="btn-secondary-standout px-6 py-3 font-serif text-xs uppercase tracking-widest rounded-xl shrink-0"
                 >
                   View Full Gallery
                 </Link>
@@ -411,13 +411,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
                 <Link
                   href="/aftercare"
-                  className="bg-charcoal-dark border border-gold-primary/30 hover:border-gold-primary text-gold-primary hover:text-white px-6 py-3 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-xl"
+                  className="btn-secondary-standout px-6 py-3 font-serif text-xs uppercase tracking-widest rounded-xl"
                 >
                   Read Healing Rules
                 </Link>
                 <Link
                   href="/booking"
-                  className="bg-gold-primary text-charcoal-dark px-6 py-3 font-serif text-xs uppercase tracking-widest font-bold hover:bg-gold-accent transition-all duration-300 rounded-xl"
+                  className="btn-primary-standout px-6 py-3 font-serif text-xs uppercase tracking-widest font-bold rounded-xl"
                 >
                   Inquire About A Cover-up
                 </Link>

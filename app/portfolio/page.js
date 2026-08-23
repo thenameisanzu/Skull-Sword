@@ -208,7 +208,7 @@ export default function Portfolio() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2.5 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-xl border ${
                   activeCategory === cat
-                    ? "bg-gold-primary text-charcoal-dark border-gold-primary font-bold shadow-lg shadow-gold-primary/10"
+                    ? "btn-primary-standout border-transparent"
                     : "bg-charcoal-medium text-foreground/80 border-charcoal-light hover:border-gold-primary/30 hover:text-white"
                 }`}
               >
@@ -343,14 +343,14 @@ export default function Portfolio() {
               <div className="flex flex-col gap-3">
                 <Link
                   href="/booking"
-                  className="w-full text-center bg-gold-primary hover:bg-gold-accent text-charcoal-dark py-3 rounded-xl font-serif uppercase tracking-widest font-bold text-xs transition-colors flex items-center justify-center gap-2"
+                  className="w-full text-center btn-primary-standout py-3 rounded-xl font-serif uppercase tracking-widest font-bold text-xs flex items-center justify-center gap-2"
                 >
                   <Calendar className="h-4 w-4" />
                   <span>Inquire with Amal Dev</span>
                 </Link>
                 <button
                   onClick={() => setSelectedWork(null)}
-                  className="w-full text-center border border-charcoal-light hover:border-gold-primary/30 text-foreground/80 hover:text-white py-3 rounded-xl text-xs font-serif uppercase tracking-widest transition-colors"
+                  className="w-full text-center btn-secondary-standout py-3 rounded-xl text-xs font-serif uppercase tracking-widest"
                 >
                   Return to Gallery
                 </button>

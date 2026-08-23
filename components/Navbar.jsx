@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Booking CTA Button */}
           <Link
             href="/booking"
-            className="border border-gold-primary hover:border-gold-accent text-gold-primary hover:text-charcoal-dark bg-transparent hover:bg-gold-primary px-5 py-2 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-xl font-bold shadow-md shadow-gold-primary/5 hover:shadow-gold-primary/20"
+            className="btn-primary-standout px-5 py-2 font-serif text-xs uppercase tracking-widest rounded-xl"
           >
             Book Session
           </Link>
@@ -120,7 +120,7 @@ export default function Navbar() {
           <Link
             href="/booking"
             onClick={() => setIsOpen(false)}
-            className="w-full text-center border border-gold-primary bg-gold-primary/10 text-gold-primary py-3 rounded-xl font-serif uppercase tracking-widest font-bold hover:bg-gold-primary hover:text-charcoal-dark transition-all duration-300"
+            className="w-full text-center btn-primary-standout py-3 rounded-xl font-serif uppercase tracking-widest font-bold"
           >
             Book Session
           </Link>

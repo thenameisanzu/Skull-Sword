@@ -87,3 +87,43 @@ body {
   color: transparent;
   display: inline-block;
 }
+
+/* Standout Button Utilities */
+.btn-primary-standout {
+  background: linear-gradient(135deg, #e5c158 0%, #c5a880 100%) !important;
+  color: #060606 !important;
+  box-shadow: 0 4px 20px rgba(229, 193, 88, 0.2) !important;
+  border: 1px solid rgba(229, 193, 88, 0.3) !important;
+  font-weight: 850 !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.btn-primary-standout:hover {
+  background: linear-gradient(135deg, #f3d070 0%, #d4af37 100%) !important;
+  box-shadow: 0 4px 25px rgba(243, 208, 112, 0.4) !important;
+  border-color: rgba(243, 208, 112, 0.5) !important;
+  transform: scale(1.02) translateY(-1px) !important;
+}
+
+.btn-primary-standout:active {
+  transform: scale(0.98) translateY(0) !important;
+}
+
+.btn-secondary-standout {
+  background: transparent !important;
+  color: #f3f4f6 !important;
+  border: 1px solid rgba(197, 168, 128, 0.4) !important;
+  font-weight: 700 !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.btn-secondary-standout:hover {
+  border-color: #d4af37 !important;
+  color: #d4af37 !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1) !important;
+  transform: scale(1.02) translateY(-1px) !important;
+}
+
+.btn-secondary-standout:active {
+  transform: scale(0.98) translateY(0) !important;
+}
