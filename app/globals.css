@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060606;
-  --foreground: #f3f4f6;
+  --background: #050505;
+  --foreground: #F2F2F2;
 
-  --gold-primary: #ff2a4b;      /* Acid Crimson Red */
-  --gold-accent: #ff4d6d;       /* Neon Red Accent */
-  --gold-dark: #4a0e17;         /* Deep Cherry Red */
+  /* Premium Warm Gold Palette */
+  --gold-primary: #cca043;
+  --gold-accent: #f0c975;
+  --gold-dark: #8c6622;
 
-  --crimson-primary: #ff2a4b;
-  --crimson-accent: #ff2a4b;
+  /* Replace crimson system with gold */
+  --crimson-primary: #cca043;
+  --crimson-accent: #f0c975;
 
-  --charcoal-light: #1b1b1b;
-  --charcoal-medium: #101010;
-  --charcoal-dark: #060606;
+  /* Charcoal */
+  --charcoal-light: #1A1A1A;
+  --charcoal-medium: #111111;
+  --charcoal-dark: #050505;
 }
 
 @theme inline {
@@ -44,36 +47,50 @@ html {
 
 body {
   background-color: var(--background);
+  background-image: 
+    linear-gradient(rgba(204, 160, 67, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204, 160, 67, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center top;
   color: var(--foreground);
   overflow-x: hidden;
 }
 
-/* Custom Premium Scrollbar */
+/* ============================================
+   CUSTOM PREMIUM SCROLLBAR
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #060606;
+  background: var(--charcoal-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a0e17;
-  border: 2px solid #060606;
+  background: var(--charcoal-light);
+  border: 2px solid var(--charcoal-dark);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff2a4b;
+  background: var(--gold-dark);
 }
 
-/* Text Selection */
+/* ============================================
+   TEXT SELECTION
+   ============================================ */
+
 ::selection {
-  background-color: #ff2a4b;
-  color: #060606;
+  background-color: var(--gold-primary);
+  color: var(--charcoal-dark);
 }
 
-/* Premium Procedural SVG Film Grain Overlay */
+/* ============================================
+   PREMIUM FILM GRAIN OVERLAY
+   ============================================ */
+
 .film-grain {
   position: fixed;
   top: 0;
@@ -87,13 +104,15 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Heading Gradient
-   White → Deep Cherry → Acid Red */
+/* ============================================
+   HEADING GRADIENT
+   White → Antique Gold → Warm Gold
+   ============================================ */
+
 .heading-gradient {
   background: linear-gradient(135deg,
-      #ffffff 0%,
-      #ff2a4b 50%,
-      #4a0e17 100%);
+      var(--gold-accent) 0%,
+      var(--gold-primary) 100%);
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,18 +122,23 @@ body {
   display: inline-block;
 }
 
-/* Primary Button */
+/* ============================================
+   PRIMARY BUTTON
+   ============================================ */
+
 .btn-primary-standout {
   background: linear-gradient(135deg,
-      #ff2a4b 0%,
-      #4a0e17 100%) !important;
+      var(--gold-accent) 0%,
+      var(--gold-primary) 55%,
+      var(--gold-dark) 100%) !important;
 
-  color: #ffffff !important;
+  color: #050505 !important;
 
   box-shadow:
-    0 4px 20px rgba(255, 42, 75, 0.25) !important;
+    0 4px 20px rgba(204, 160, 67, 0.3),
+    0 0 30px rgba(204, 160, 67, 0.15) !important;
 
-  border: 1px solid rgba(255, 42, 75, 0.4) !important;
+  border: 1px solid rgba(240, 201, 117, 0.45) !important;
 
   font-weight: 850 !important;
 
@@ -124,13 +148,15 @@ body {
 
 .btn-primary-standout:hover {
   background: linear-gradient(135deg,
-      #ff4d6d 0%,
-      #631220 100%) !important;
+      #f5d78c 0%,
+      #dcb25b 55%,
+      #a87d32 100%) !important;
 
   box-shadow:
-    0 4px 25px rgba(255, 42, 75, 0.45) !important;
+    0 4px 25px rgba(204, 160, 67, 0.45),
+    0 0 35px rgba(204, 160, 67, 0.25) !important;
 
-  border-color: rgba(255, 42, 75, 0.6) !important;
+  border-color: rgba(240, 201, 117, 0.7) !important;
 
   transform: scale(1.02) translateY(-1px) !important;
 }
@@ -139,13 +165,16 @@ body {
   transform: scale(0.98) translateY(0) !important;
 }
 
-/* Secondary Button */
+/* ============================================
+   SECONDARY BUTTON
+   ============================================ */
+
 .btn-secondary-standout {
   background: transparent !important;
 
-  color: #f3f4f6 !important;
+  color: var(--gold-primary) !important;
 
-  border: 1px solid rgba(255, 42, 75, 0.4) !important;
+  border: 1px solid rgba(204, 160, 67, 0.5) !important;
 
   font-weight: 700 !important;
 
@@ -154,39 +183,17 @@ body {
 }
 
 .btn-secondary-standout:hover {
-  border-color: #ff2a4b !important;
+  border-color: var(--gold-accent) !important;
 
-  color: #ff2a4b !important;
-
-  background: rgba(255, 42, 75, 0.08) !important;
+  color: var(--gold-accent) !important;
 
   box-shadow:
-    0 4px 15px rgba(255, 42, 75, 0.15) !important;
+    0 4px 15px rgba(204, 160, 67, 0.2),
+    0 0 20px rgba(204, 160, 67, 0.1) !important;
 
   transform: scale(1.02) translateY(-1px) !important;
 }
 
 .btn-secondary-standout:active {
   transform: scale(0.98) translateY(0) !important;
-}
-
-/* Brand Logo Text Glow Effect */
-.brand-glow {
-  text-shadow: 0 0 10px rgba(255, 42, 75, 0.6), 0 0 20px rgba(255, 42, 75, 0.3);
-  animation: brand-pulse 3s infinite ease-in-out alternate;
-  transition: text-shadow 0.3s ease, color 0.3s ease !important;
-}
-
-@keyframes brand-pulse {
-  0% {
-    text-shadow: 0 0 8px rgba(255, 42, 75, 0.4), 0 0 15px rgba(255, 42, 75, 0.2);
-  }
-  100% {
-    text-shadow: 0 0 18px rgba(255, 42, 75, 0.85), 0 0 30px rgba(255, 42, 75, 0.5);
-  }
-}
-
-.group:hover .brand-glow {
-  color: #ffffff !important;
-  text-shadow: 0 0 12px rgba(255, 42, 75, 0.95), 0 0 25px rgba(255, 42, 75, 0.7), 0 0 40px rgba(255, 42, 75, 0.5) !important;
 }

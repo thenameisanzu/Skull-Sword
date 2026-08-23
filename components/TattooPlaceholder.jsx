@@ -55,17 +55,17 @@ export default function TattooPlaceholder({ type = "skull", className = "", widt
             {/* Ray lines */}
             {Array.from({ length: 12 }).map((_, i) => {
               const angle = (i * 30 * Math.PI) / 180;
-              const x1 = 50 + Math.cos(angle) * 5;
-              const y1 = 50 + Math.sin(angle) * 5;
-              const x2 = 50 + Math.cos(angle) * 45;
-              const y2 = 50 + Math.sin(angle) * 45;
+              const x1 = (50 + Math.cos(angle) * 5).toFixed(4);
+              const y1 = (50 + Math.sin(angle) * 5).toFixed(4);
+              const x2 = (50 + Math.cos(angle) * 45).toFixed(4);
+              const y2 = (50 + Math.sin(angle) * 45).toFixed(4);
               return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
             })}
             {/* Overlay nodes */}
             {Array.from({ length: 8 }).map((_, i) => {
               const angle = (i * 45 * Math.PI) / 180;
-              const x = 50 + Math.cos(angle) * 35;
-              const y = 50 + Math.sin(angle) * 35;
+              const x = (50 + Math.cos(angle) * 35).toFixed(4);
+              const y = (50 + Math.sin(angle) * 35).toFixed(4);
               return <circle key={i} cx={x} cy={y} r="2" className="text-crimson-accent" fill="currentColor" />;
             })}
           </svg>
