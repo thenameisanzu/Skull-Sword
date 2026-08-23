@@ -59,8 +59,12 @@ export default function FloatingAction() {
         </Link>
       </div>
 
-      {/* Mobile Sticky Bottom Tab (always visible on small screens for high usability) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-charcoal-medium/95 backdrop-blur-md border-t border-gold-primary/20 px-4 pt-3 pb-5 flex items-center justify-between gap-3 shadow-[0_-10px_30px_rgba(0,0,0,0.8)]">
+      {/* Mobile Sticky Bottom Tab (slides up on scroll for high usability, hidden in hero) */}
+      <div
+        className={`md:hidden fixed bottom-0 left-0 right-0 z-40 bg-charcoal-medium/95 backdrop-blur-md border-t border-gold-primary/20 px-4 pt-3 pb-5 flex items-center justify-between gap-3 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] transition-all duration-500 transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12 pointer-events-none"
+        }`}
+      >
         <a
           href="https://wa.me/918921865894"
           target="_blank"
