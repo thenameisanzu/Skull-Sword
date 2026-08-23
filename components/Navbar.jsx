@@ -40,7 +40,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <Skull className="h-7 w-7 text-gold-primary group-hover:text-gold-accent transition-colors duration-300 group-hover:rotate-12 transform" />
+          <div className="w-8 h-8 rounded-full border border-gold-primary/30 overflow-hidden shrink-0 group-hover:border-gold-accent transition-all duration-500 group-hover:scale-105">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="Skull & Sword Logo"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <span className="font-brand text-xl md:text-2xl font-extrabold tracking-widest text-gold-primary group-hover:text-white transition-colors duration-300">
             SKULL & SWORD
           </span>

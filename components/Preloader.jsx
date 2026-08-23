@@ -81,10 +81,15 @@ export default function Preloader() {
 
       <div className="relative z-10 flex flex-col items-center select-none text-center">
         {/* Pulsing Logo Circle */}
-        <div className="relative w-32 h-32 mb-8 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-gold-primary/5 blur-2xl animate-pulse"></div>
-          <div className="w-20 h-20 rounded-full border border-gold-primary/20 bg-charcoal-medium flex items-center justify-center shadow-2xl shadow-black">
-            <Skull className="h-10 w-10 text-gold-primary animate-pulse" />
+        <div className="relative w-32 h-32 mb-8 flex items-center justify-center animate-pulse">
+          <div className="absolute inset-0 rounded-full bg-gold-primary/5 blur-2xl"></div>
+          <div className="w-20 h-20 rounded-full border border-gold-primary/20 bg-charcoal-medium overflow-hidden shadow-2xl shadow-black">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="Skull & Sword Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
