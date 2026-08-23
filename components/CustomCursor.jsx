@@ -7,9 +7,10 @@ export default function CustomCursor() {
   const cursorInnerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(true);
 
-  // Use mutable refs to track positions instead of React state to prevent re-renders
+  // Use mutable refs to track positions and scale instead of React state to prevent re-renders
   const mouseRef = useRef({ x: 0, y: 0 });
   const trailRef = useRef({ x: 0, y: 0 });
+  const scaleRef = useRef(1);
   const isHoveredRef = useRef(false);
   const isHiddenRef = useRef(true);
 
@@ -26,7 +27,12 @@ export default function CustomCursor() {
     checkDevice();
     window.addEventListener("resize", checkDevice);
 
-    if (isMobile) return;
+    // If it's a mobile/touch device, don't run cursor events
+    const isTouch = 
+      window.matchMedia("(max-width: 768px)").matches || 
+      ("ontouchstart" in window) || 
+      (navigator.maxTouchPoints > 0);
+    if (isTouch) return;
 
     const handleMouseMove = (e) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
@@ -43,48 +49,36 @@ export default function CustomCursor() {
       if (cursorInnerRef.current) cursorInnerRef.current.style.opacity = "0";
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    // Setup hover listeners for interactive elements
-    const setupHovers = () => {
-      const interactives = document.querySelectorAll(
-        "a, button, [role='button'], input, select, textarea, .group\\/tilt, .cursor-pointer"
+    // Event delegation for interactive hover states (100% leak free)
+    const handleMouseOver = (e) => {
+      const interactive = e.target.closest(
+        "a, button, [role='button'], input, select, textarea, .group\\/tilt, .cursor-pointer, img"
       );
       
-      const onEnter = () => {
+      if (interactive) {
         isHoveredRef.current = true;
         if (cursorOuterRef.current) {
-          cursorOuterRef.current.classList.add("scale-125", "border-crimson-primary", "bg-crimson-primary/5");
-          cursorOuterRef.current.classList.remove("border-gold-primary");
+          cursorOuterRef.current.style.borderColor = "var(--gold-accent)";
+          cursorOuterRef.current.style.backgroundColor = "rgba(242, 97, 63, 0.08)";
         }
         if (cursorInnerRef.current) {
-          cursorInnerRef.current.classList.add("scale-0", "opacity-0");
+          cursorInnerRef.current.style.opacity = "0";
         }
-      };
-
-      const onLeave = () => {
+      } else {
         isHoveredRef.current = false;
         if (cursorOuterRef.current) {
-          cursorOuterRef.current.classList.remove("scale-125", "border-crimson-primary", "bg-crimson-primary/5");
-          cursorOuterRef.current.classList.add("border-gold-primary");
+          cursorOuterRef.current.style.borderColor = "var(--gold-primary)";
+          cursorOuterRef.current.style.backgroundColor = "transparent";
         }
         if (cursorInnerRef.current) {
-          cursorInnerRef.current.classList.remove("scale-0", "opacity-0");
+          cursorInnerRef.current.style.opacity = isHiddenRef.current ? "0" : "1";
         }
-      };
-
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
-        el.addEventListener("mouseenter", onEnter);
-        el.addEventListener("mouseleave", onLeave);
-      });
+      }
     };
 
-    setupHovers();
-    const observer = new MutationObserver(setupHovers);
-    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mouseover", handleMouseOver);
 
     // Smooth animation loop using requestAnimationFrame
     let animFrame;
@@ -94,19 +88,23 @@ export default function CustomCursor() {
         return;
       }
 
-      // Calculate inertia for outer ring
+      // Calculate inertia for outer ring position
       const dx = mouseRef.current.x - trailRef.current.x;
       const dy = mouseRef.current.y - trailRef.current.y;
       
       trailRef.current.x += dx * 0.16;
       trailRef.current.y += dy * 0.16;
 
+      // Calculate springy scale interpolation
+      const targetScale = isHoveredRef.current ? 1.5 : 1;
+      scaleRef.current += (targetScale - scaleRef.current) * 0.2;
+
       // Update styles directly on the DOM element to bypass React render cycles
       if (cursorInnerRef.current) {
         cursorInnerRef.current.style.transform = `translate3d(${mouseRef.current.x}px, ${mouseRef.current.y}px, 0)`;
       }
       if (cursorOuterRef.current) {
-        cursorOuterRef.current.style.transform = `translate3d(${trailRef.current.x}px, ${trailRef.current.y}px, 0)`;
+        cursorOuterRef.current.style.transform = `translate3d(${trailRef.current.x}px, ${trailRef.current.y}px, 0) scale(${scaleRef.current})`;
       }
 
       animFrame = requestAnimationFrame(tick);
@@ -117,8 +115,8 @@ export default function CustomCursor() {
       window.removeEventListener("resize", checkDevice);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mouseover", handleMouseOver);
       cancelAnimationFrame(animFrame);
-      observer.disconnect();
     };
   }, [isMobile]);
 
@@ -131,17 +129,17 @@ export default function CustomCursor() {
         ref={cursorOuterRef}
         className="fixed top-0 left-0 w-8 h-8 rounded-full border border-gold-primary pointer-events-none z-[99999] -ml-4 -mt-4 opacity-0 transition-opacity duration-300 will-change-transform"
         style={{
-          transform: "translate3d(0, 0, 0)",
-          transition: "width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s, opacity 0.3s",
+          transform: "translate3d(0, 0, 0) scale(1)",
+          transition: "border-color 0.25s, background-color 0.25s, opacity 0.3s",
         }}
       />
       {/* Inner precise dot */}
       <div
         ref={cursorInnerRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-crimson-primary pointer-events-none z-[99999] -ml-[3px] -mt-[3px] opacity-0 transition-opacity duration-300 will-change-transform"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-gold-accent pointer-events-none z-[99999] -ml-[3px] -mt-[3px] opacity-0 transition-opacity duration-300 will-change-transform"
         style={{
           transform: "translate3d(0, 0, 0)",
-          transition: "opacity 0.3s",
+          transition: "opacity 0.2s",
         }}
       />
     </>
