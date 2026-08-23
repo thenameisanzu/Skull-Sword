@@ -22,12 +22,6 @@ export default function Preloader() {
   ];
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("skull-sword-visited");
-    if (hasVisited === "true") {
-      setIsVisible(false);
-      setShouldRender(false);
-      return;
-    }
 
     // Incremental step change
     // Faster step progression for smoother UX on all devices (especially mobile)

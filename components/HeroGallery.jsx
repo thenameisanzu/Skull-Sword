@@ -42,7 +42,6 @@ function HeroPanel({ imageSrc, placeholderType, index }) {
 }
 
 const heroAccordionPanels = [
-  { src: "/images/hero-1.png", type: "skull" },
   { src: "/images/hero-2.png", type: "dagger" },
   { src: "/images/hero-3.png", type: "rose" },
   { src: "/images/hero-4.png", type: "mandala" },
