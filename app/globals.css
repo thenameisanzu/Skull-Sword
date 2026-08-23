@@ -169,3 +169,24 @@ body {
 .btn-secondary-standout:active {
   transform: scale(0.98) translateY(0) !important;
 }
+
+/* Brand Logo Text Glow Effect */
+.brand-glow {
+  text-shadow: 0 0 10px rgba(149, 1, 1, 0.6), 0 0 20px rgba(149, 1, 1, 0.3);
+  animation: brand-pulse 3s infinite ease-in-out alternate;
+  transition: text-shadow 0.3s ease, color 0.3s ease !important;
+}
+
+@keyframes brand-pulse {
+  0% {
+    text-shadow: 0 0 8px rgba(149, 1, 1, 0.4), 0 0 15px rgba(149, 1, 1, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(149, 1, 1, 0.85), 0 0 30px rgba(149, 1, 1, 0.5);
+  }
+}
+
+.group:hover .brand-glow {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(149, 1, 1, 0.95), 0 0 25px rgba(149, 1, 1, 0.7), 0 0 40px rgba(149, 1, 1, 0.5) !important;
+}

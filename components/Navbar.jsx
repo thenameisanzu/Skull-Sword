@@ -48,7 +48,7 @@ export default function Navbar() {
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-brand text-xl md:text-2xl font-extrabold tracking-widest text-gold-primary group-hover:text-white transition-colors duration-300">
+          <span className="font-brand text-xl md:text-2xl font-extrabold tracking-widest text-gold-primary brand-glow">
             SKULL & SWORD
           </span>
         </Link>
