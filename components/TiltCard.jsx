@@ -53,7 +53,7 @@ export default function TiltCard({ children, className = "" }) {
     >
       {/* 3D Red Gloss Overlay Effect */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover/tilt:opacity-25 pointer-events-none z-20 transition-opacity duration-300 bg-[radial-gradient(circle_at_var(--shine-x,50%)_var(--shine-y,50%),rgba(149,1,1,0.6),transparent_50%)]"
+        className="absolute inset-0 opacity-0 group-hover/tilt:opacity-25 pointer-events-none z-20 transition-opacity duration-300 bg-[radial-gradient(circle_at_var(--shine-x,50%)_var(--shine-y,50%),rgba(255,42,75,0.4),transparent_50%)]"
       />
       {children}
     </div>

@@ -59,7 +59,7 @@ export default function CustomCursor() {
         isHoveredRef.current = true;
         if (cursorOuterRef.current) {
           cursorOuterRef.current.style.borderColor = "var(--gold-primary)";
-          cursorOuterRef.current.style.backgroundColor = "rgba(149, 1, 1, 0.08)";
+          cursorOuterRef.current.style.backgroundColor = "rgba(255, 42, 75, 0.08)";
         }
         if (cursorInnerRef.current) {
           cursorInnerRef.current.style.opacity = "0";
@@ -67,7 +67,7 @@ export default function CustomCursor() {
       } else {
         isHoveredRef.current = false;
         if (cursorOuterRef.current) {
-          cursorOuterRef.current.style.borderColor = "rgba(149, 1, 1, 0.5)";
+          cursorOuterRef.current.style.borderColor = "rgba(255, 42, 75, 0.4)";
           cursorOuterRef.current.style.backgroundColor = "transparent";
         }
         if (cursorInnerRef.current) {
