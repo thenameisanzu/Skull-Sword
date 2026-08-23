@@ -6,6 +6,30 @@ import Reveal from "./Reveal";
 
 const moments = [
   {
+    src: "/images/studio-moment-1.png",
+    title: "Child's Calculator Smile",
+    subtitle: "Studio Family Visit",
+    credits: "Skull & Sword Tattoos",
+  },
+  {
+    src: "/images/studio-moment-2.png",
+    title: "Father & Baby Gaze",
+    subtitle: "Happy Studio Visitors",
+    credits: "Autoclave Certified Safe Area",
+  },
+  {
+    src: "/images/studio-moment-3.png",
+    title: "Joy of Ink",
+    subtitle: "Client Smile in Session",
+    credits: "Amal Dev Shading Lineage",
+  },
+  {
+    src: "/images/studio-moment-4.png",
+    title: "Realism Stencil Fit",
+    subtitle: "Mother & Daughter Stencil",
+    credits: "Bespoke Anatomical Placing",
+  },
+  {
     src: "/images/moment-4.png",
     title: "Amal Dev in Session",
     subtitle: "Precision Tattoo Crafting",
@@ -114,7 +138,7 @@ export default function CircularMomentsGallery() {
             Studio Gallery
           </span>
           <h3 className="font-serif text-2xl uppercase tracking-wider font-black text-foreground">
-            Happy Moments
+            Studio Moments
           </h3>
           <p className="text-[11px] text-foreground/50 mt-1">
             Auto-sliding moments showing our clients and piercing curations
