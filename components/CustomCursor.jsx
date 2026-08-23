@@ -58,8 +58,8 @@ export default function CustomCursor() {
       if (interactive) {
         isHoveredRef.current = true;
         if (cursorOuterRef.current) {
-          cursorOuterRef.current.style.borderColor = "var(--gold-accent)";
-          cursorOuterRef.current.style.backgroundColor = "rgba(242, 97, 63, 0.08)";
+          cursorOuterRef.current.style.borderColor = "var(--gold-primary)";
+          cursorOuterRef.current.style.backgroundColor = "rgba(149, 1, 1, 0.08)";
         }
         if (cursorInnerRef.current) {
           cursorInnerRef.current.style.opacity = "0";
@@ -67,7 +67,7 @@ export default function CustomCursor() {
       } else {
         isHoveredRef.current = false;
         if (cursorOuterRef.current) {
-          cursorOuterRef.current.style.borderColor = "var(--gold-primary)";
+          cursorOuterRef.current.style.borderColor = "rgba(149, 1, 1, 0.5)";
           cursorOuterRef.current.style.backgroundColor = "transparent";
         }
         if (cursorInnerRef.current) {
@@ -136,7 +136,7 @@ export default function CustomCursor() {
       {/* Inner precise dot */}
       <div
         ref={cursorInnerRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-gold-accent pointer-events-none z-[99999] -ml-[3px] -mt-[3px] opacity-0 transition-opacity duration-300 will-change-transform"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-gold-primary pointer-events-none z-[99999] -ml-[3px] -mt-[3px] opacity-0 transition-opacity duration-300 will-change-transform"
         style={{
           transform: "translate3d(0, 0, 0)",
           transition: "opacity 0.2s",
