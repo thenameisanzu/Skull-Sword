@@ -327,8 +327,13 @@ export default function Home() {
             </Reveal>
 
             <Reveal direction="spear-right" delay={200}>
-              <div className="w-full h-80 lg:h-[450px]">
-                <TattooPlaceholder type="ambience" className="h-full rounded-2xl" />
+              <div className="w-full h-80 lg:h-[450px] relative overflow-hidden rounded-2xl border border-charcoal-light">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/studio-heritage.jpg"
+                  alt="Skull & Sword Studio Setup"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Reveal>
           </div>

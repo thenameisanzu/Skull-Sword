@@ -43,8 +43,13 @@ export default function Studio() {
               </p>
             </div>
             
-            <div className="w-full h-80 lg:h-[400px]">
-              <TattooPlaceholder type="ambience" className="h-full rounded-2xl" />
+            <div className="w-full h-80 lg:h-[400px] relative overflow-hidden rounded-2xl border border-charcoal-light">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/studio-heritage.jpg"
+                alt="Skull & Sword Studio Setup"
+                className="w-full h-full object-cover"
+              />
             </div>
           </section>
 
